@@ -14,26 +14,6 @@ function stripSqlFromContent(content: string): string {
   return out.trimEnd();
 }
 
-function SqlFooter({ queries }: { queries: string[] }) {
-  const [open, setOpen] = useState(false);
-  if (queries.length === 0) return null;
-  return (
-    <div className="mt-2">
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="text-xs text-gray-400 hover:text-gray-600 underline-offset-2 hover:underline"
-      >
-        {open ? "Hide queries" : `Show ${queries.length} quer${queries.length === 1 ? "y" : "ies"}`}
-      </button>
-      {open && (
-        <pre className="mt-2 text-xs bg-gray-50 border border-gray-200 rounded p-3 overflow-x-auto whitespace-pre-wrap">
-          {queries.join("\n\n---\n\n")}
-        </pre>
-      )}
-    </div>
-  );
-}
-
 function LoadingDots() {
   return (
     <div className="flex items-center gap-1 px-4 py-3">
@@ -134,7 +114,6 @@ export default function Page() {
                       {stripSqlFromContent(turn.content)}
                     </ReactMarkdown>
                   </div>
-                  <SqlFooter queries={turn.queries} />
                 </div>
               </div>
             )
@@ -161,7 +140,7 @@ export default function Page() {
             maxLength={4000}
             rows={1}
             placeholder="Ask about machines, products, or routes… (Enter to send, Shift+Enter for newline)"
-            className="flex-1 resize-none rounded-xl border border-gray-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 leading-relaxed"
+            className="flex-1 resize-none rounded-xl border border-gray-300 px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 leading-relaxed placeholder:text-gray-500"
             style={{ maxHeight: "8rem", overflowY: "auto" }}
           />
           <button
