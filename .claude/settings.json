@@ -13,7 +13,8 @@
       "Bash(sqlite3 backend/data/seed.db \"SELECT COUNT\\(DISTINCT rs.machine_code\\) FROM route_steps rs JOIN routes r ON rs.bom_code = r.bom_code JOIN products p ON r.product_code = p.code;\")",
       "Bash(sqlite3 backend/data/seed.db \"SELECT COUNT\\(DISTINCT r.product_code\\) FROM routes r JOIN route_steps rs ON r.bom_code = rs.bom_code WHERE rs.machine_code LIKE '%BAL%';\")",
       "Bash(sqlite3 backend/data/seed.db \"SELECT COUNT\\(*\\) FROM \\(SELECT DISTINCT r.product_code, rs.machine_code FROM routes r JOIN route_steps rs ON r.bom_code = rs.bom_code WHERE rs.machine_code = 'BAL 1'\\);\")",
-      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('TEXT:', d['text'][:200]\\); print\\('QUERIES:', d['queries']\\)\")"
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('TEXT:', d['text'][:200]\\); print\\('QUERIES:', d['queries']\\)\")",
+      "Bash(curl -s -X POST https://navi-dev-challenge-production.up.railway.app/chat -H 'Content-Type: application/json' -d '{ *)"
     ]
   }
 }
