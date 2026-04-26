@@ -1,3 +1,7 @@
+# Click This Link
+
+https://navi-dev-challenge.vercel.app/
+
 # Navi Manufacturing Operations Chatbot
 
 A chatbot that answers natural-language questions about a Turkish textile manufacturer's production dataset — machines, products, BOM variants, route steps, and operation parameters. The user types a question; the backend translates it into SQL, executes it against a local SQLite database, and returns a structured answer with a full audit trail of every query run.
@@ -6,7 +10,7 @@ A chatbot that answers natural-language questions about a Turkish textile manufa
 
 | Service  | URL |
 |----------|-----|
-| Frontend | _Vercel URL (add after deploy)_ |
+| Frontend | https://navi-dev-challenge.vercel.app/ |
 | Backend  | _Railway URL (add after deploy)_ |
 
 ## Local development
