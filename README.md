@@ -2,6 +2,12 @@
 
 https://navi-dev-challenge.vercel.app/
 
+# Tech Stack
+
+Python, FastAPI, Claude API, SQLite, TypeScript, Next.js, Tailwind CSS
+
+Deployed using Vercel and Railway
+
 # Navi Manufacturing Operations Chatbot
 
 A chatbot that answers natural-language questions about a Turkish textile manufacturer's production dataset — machines, products, BOM variants, route steps, and operation parameters. The user types a question; the backend translates it into SQL, executes it against a local SQLite database, and returns a structured answer with a full audit trail of every query run.
