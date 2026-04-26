@@ -8,6 +8,12 @@ type AssistantTurn = { role: "assistant"; content: string; queries: string[] };
 type UserTurn = { role: "user"; content: string };
 type Turn = UserTurn | AssistantTurn;
 
+function stripSqlFromContent(content: string): string {
+  let out = content.replace(/\n#{1,6}\s*Queries\s*\n[\s\S]*$/i, "");
+  out = out.replace(/```sql\b[\s\S]*?```/gi, "");
+  return out.trimEnd();
+}
+
 function SqlFooter({ queries }: { queries: string[] }) {
   const [open, setOpen] = useState(false);
   if (queries.length === 0) return null;
@@ -125,7 +131,7 @@ export default function Page() {
                 <div className="max-w-[90%] bg-white border border-gray-200 rounded-2xl rounded-tl-sm px-4 py-3 text-sm shadow-sm">
                   <div className="prose prose-sm max-w-none prose-pre:bg-gray-50 prose-pre:text-xs prose-table:text-xs">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                      {turn.content}
+                      {stripSqlFromContent(turn.content)}
                     </ReactMarkdown>
                   </div>
                   <SqlFooter queries={turn.queries} />

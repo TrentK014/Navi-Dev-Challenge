@@ -29,6 +29,15 @@ def run_chat(messages: list[dict]) -> dict:
                 query = block.input["query"]
                 queries_run.append(query)
                 result = execute_run_sql(query)
+                print("=" * 60, flush=True)
+                print(f"[run_sql] query: {query}", flush=True)
+                if "error" in result:
+                    print(f"[run_sql] error: {result['error']}", flush=True)
+                else:
+                    print(f"[run_sql] row_count: {result['row_count']}", flush=True)
+                    for i, row in enumerate(result["rows"][:3]):
+                        print(f"[run_sql] row[{i}]: {row}", flush=True)
+                print("=" * 60, flush=True)
                 tool_results.append({
                     "type": "tool_result",
                     "tool_use_id": block.id,
