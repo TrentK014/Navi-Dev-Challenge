@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+backend/venv/
+.env
+.env.local
+node_modules/
+.next/
+frontend/.env.local
+# seed.db is committed intentionally
