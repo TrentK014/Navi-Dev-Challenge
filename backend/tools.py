@@ -1,4 +1,4 @@
-from .db import connection
+from db import connection
 
 TOOLS = [
     {

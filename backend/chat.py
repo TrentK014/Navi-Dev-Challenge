@@ -1,7 +1,7 @@
 import os
 from anthropic import Anthropic
-from .prompt import SYSTEM_PROMPT
-from .tools import TOOLS, execute_run_sql
+from prompt import SYSTEM_PROMPT
+from tools import TOOLS, execute_run_sql
 
 client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 MODEL = "claude-sonnet-4-5"

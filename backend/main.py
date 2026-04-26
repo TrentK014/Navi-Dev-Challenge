@@ -5,7 +5,7 @@ load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-from .chat import run_chat
+from chat import run_chat
 
 app = FastAPI()
 
