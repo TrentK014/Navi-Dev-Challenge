@@ -8,8 +8,14 @@ MODEL = "claude-sonnet-4-5"
 MAX_ITERATIONS = 8
 
 
+HISTORY_TURNS = 2  # number of user/assistant pairs to keep before the current message
+
 def run_chat(messages: list[dict]) -> dict:
     queries_run: list[str] = []
+    # Keep only the last HISTORY_TURNS exchanges + the current user message to prevent
+    # the model from reusing stale numbers from earlier in the conversation.
+    if len(messages) > HISTORY_TURNS * 2 + 1:
+        messages = messages[-(HISTORY_TURNS * 2 + 1):]
     convo = list(messages)
     for _ in range(MAX_ITERATIONS):
         response = client.messages.create(
