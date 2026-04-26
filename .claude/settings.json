@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sqlite3 backend/data/seed.db \"SELECT COUNT\\(*\\) FROM route_steps;\")",
+      "Bash(sqlite3 backend/data/seed.db \"SELECT COUNT\\(*\\) FROM route_steps WHERE cycle_time_seconds IS NOT NULL;\")",
+      "Bash(curl -s -X POST http://localhost:8000/chat -H 'Content-Type: application/json' -d '{\"messages\":[{\"role\":\"user\",\"content\":\"How many route steps have null cycle times?\"}]}')",
+      "Bash(sqlite3 backend/data/seed.db \"SELECT DISTINCT r.product_code FROM routes r WHERE r.product_code NOT IN \\(SELECT DISTINCT r2.product_code FROM routes r2 JOIN route_steps rs ON r2.bom_code = rs.bom_code WHERE rs.machine_code = 'FKK 2'\\) ORDER BY r.product_code;\")"
+    ]
+  }
+}

@@ -15,6 +15,7 @@ def run_chat(messages: list[dict]) -> dict:
         response = client.messages.create(
             model=MODEL,
             max_tokens=2048,
+            temperature=0,
             system=SYSTEM_PROMPT,
             tools=TOOLS,
             messages=convo,
